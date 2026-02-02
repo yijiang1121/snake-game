@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Classic Snake</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hud">
+        <div class="scoreboard">
+          <span class="label">Score</span>
+          <strong class="value" data-score>0</strong>
+        </div>
+        <div class="scoreboard">
+          <span class="label">Best</span>
+          <strong class="value" data-best>0</strong>
+        </div>
+        <div class="scoreboard">
+          <span class="label">Status</span>
+          <strong class="value" data-status>Running</strong>
+        </div>
+        <div class="actions">
+          <button type="button" data-pause>Pause</button>
+          <button type="button" data-restart>Restart</button>
+        </div>
+      </header>
+
+      <section class="grid-section">
+        <div id="grid" class="grid" role="grid" aria-label="Snake board"></div>
+        <div class="overlay hidden" data-overlay>
+          <p class="overlay-title" data-overlay-text>Press Restart</p>
+          <p class="overlay-subtitle">Use arrow keys or on-screen controls.</p>
+        </div>
+      </section>
+
+      <section class="control-panel">
+        <p class="panel-label">On-screen controls</p>
+        <div class="control-grid">
+          <div class="control-row">
+            <button type="button" data-direction="up">↑</button>
+          </div>
+          <div class="control-row">
+            <button type="button" data-direction="left">←</button>
+            <button type="button" data-direction="down">↓</button>
+            <button type="button" data-direction="right">→</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="instructions">
+        <h2>How to play</h2>
+        <ul>
+          <li>Use arrow keys or WASD to change direction.</li>
+          <li>Gather food (orange squares) to grow the snake and score points.</li>
+          <li>Avoid colliding with walls or your own tail.</li>
+          <li>Pause anytime with the pause button; restart resets the board.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
