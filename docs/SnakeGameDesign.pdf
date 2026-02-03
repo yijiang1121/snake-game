@@ -1,0 +1,134 @@
+%PDF-1.4
+1 0 obj
+<< /Length 2994 >>
+stream
+BT /F2 22.00 Tf 1 0 0 1 124.50 707.20 Tm (CLASSIC SNAKE – GAME DESIGN BRIEF) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 685.40 Tm (Author: Codex \(GPT-5\) · Repo: snake-game · Date: February 2, 2026) Tj ET
+BT /F2 16.00 Tf 1 0 0 1 54.00 645.00 Tm (1. Vision & Pillars) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 625.80 Tm (Deliver a timeless Snake experience that feels immediate, readable, and) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 609.00 Tm (responsive inside a single-page web app. The build must stay dependency-) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 592.20 Tm (light, deterministic, and keyboard-first while providing mobile-friendly) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 575.40 Tm (controls.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 543.00 Tm (Pillars) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 522.60 Tm (• Deterministic logic – pure state transitions in SnakeGame enable) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 505.80 Tm (  straightforward tests and debugging.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 486.60 Tm (• Minimalist UI – single grid, HUD, overlay, and controls live in one) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 469.80 Tm (  stylesheet.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 450.60 Tm (• Inclusive input – arrow keys, WASD, tap buttons, and auto-pause for focus) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 433.80 Tm (  changes.) Tj ET
+BT /F2 12.00 Tf 1 0 0 1 54.00 402.60 Tm (Metric | Target | Rationale) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 62.00 387.20 Tm (Perceived responsiveness — ~60 FPS feel via 140 ms ticks — Keeps motion lively) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 62.00 371.80 Tm (without overwhelming casual players.) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 62.00 356.40 Tm (Dependencies — Zero runtime packages — Matches repo scope and enables static) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 62.00 341.00 Tm (hosting anywhere.) Tj ET
+BT /F2 16.00 Tf 1 0 0 1 54.00 300.60 Tm (2. Core Loop) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 281.40 Tm (Four deterministic phases run each tick:) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 261.00 Tm (1. Input – queue direction changes unless reversing into the snake.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 241.80 Tm (2. Advance – promote next direction, move head, shift body.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 222.60 Tm (3. Collide – detect walls/self; end run and freeze loop if triggered.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 203.40 Tm (4. Resolve – grow and score when food matches head, otherwise trim tail.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 172.20 Tm (Every tick returns a snapshot consumed directly by the renderer, so DOM) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 155.40 Tm (updates always reflect authoritative state.) Tj ET
+BT /F2 16.00 Tf 1 0 0 1 54.00 115.00 Tm (3. Board, Speed & Progression) Tj ET
+BT /F2 12.00 Tf 1 0 0 1 54.00 95.80 Tm (Setting | Value | Rationale) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 62.00 80.40 Tm (Grid Size — 20 × 20 cells — Balances open space with quick difficulty ramp as the) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 62.00 65.00 Tm (snake lengthens.) Tj ET
+endstream
+endobj
+2 0 obj
+<< /Type /Page /Parent 7 0 R /MediaBox [0 0 612 792] /Contents 1 0 R /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> >> >> >>
+endobj
+3 0 obj
+<< /Length 3067 >>
+stream
+BT /F1 11.00 Tf 1 0 0 1 62.00 722.60 Tm (Tick Interval — 140 ms — Fast enough to feel lively while remaining readable on) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 62.00 707.20 Tm (touch devices.) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 62.00 691.80 Tm (Initial Body — 3 segments — Provides maneuverability yet shows growth) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 62.00 676.40 Tm (immediately.) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 62.00 661.00 Tm (Food RNG — Clamped Math.random\(\) — Guarantees spawns stay on-grid and avoid snake) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 62.00 645.60 Tm (tiles.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 613.20 Tm (These knobs live inside SnakeGame, making difficulty tuning centralized and) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 596.40 Tm (testable.) Tj ET
+BT /F2 16.00 Tf 1 0 0 1 54.00 556.00 Tm (4. Systems Architecture) Tj ET
+BT /F2 13.00 Tf 1 0 0 1 54.00 534.20 Tm (4.1 State Engine \(src/snakeGame.js\)) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 517.40 Tm (• Stores snake array, food position, direction queue, score, status, and) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 500.60 Tm (  best score.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 481.40 Tm (• tick\(\) mutates internal arrays but exposes a cloned snapshot to) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 464.60 Tm (  presenters.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 445.40 Tm (• Collision helpers keep logic tiny and deterministic; RNG injection) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 428.60 Tm (  enables repeatable tests.) Tj ET
+BT /F2 13.00 Tf 1 0 0 1 54.00 394.80 Tm (4.2 Presenter \(src/main.js\)) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 378.00 Tm (• Bootstraps DOM grid once, keeping references in a Map for O\(1\) lookups.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 358.80 Tm (• Keyboard handler maps Arrow keys and WASD; tap buttons emit the same) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 342.00 Tm (  direction events.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 322.80 Tm (• Pause/Resume toggle the interval without destroying game state; overlay) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 306.00 Tm (  communicates end-state.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 286.80 Tm (• Window blur auto-pauses; focus resumes to protect players from background) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 270.00 Tm (  losses.) Tj ET
+BT /F2 13.00 Tf 1 0 0 1 54.00 236.20 Tm (4.3 Persistence) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 219.40 Tm (Session-only best score is stored in memory; extendable to localStorage if) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 202.60 Tm (requirements expand.) Tj ET
+BT /F2 16.00 Tf 1 0 0 1 54.00 162.20 Tm (5. Controls & UX) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 143.00 Tm (• Keyboard: Arrow keys & WASD prevent reversal into the snake body within) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 126.20 Tm (  one tick.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 107.00 Tm (• On-screen D-Pad: Touch-friendly buttons mirror keyboard events with) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 90.20 Tm (  touchstart preventing scroll.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 71.00 Tm (• Auto Pause: Window blur triggers pause; focus resumes automatically.) Tj ET
+endstream
+endobj
+4 0 obj
+<< /Type /Page /Parent 7 0 R /MediaBox [0 0 612 792] /Contents 3 0 R /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> >> >> >>
+endobj
+5 0 obj
+<< /Length 2170 >>
+stream
+BT /F1 12.00 Tf 1 0 0 1 62.00 721.20 Tm (• HUD: Score, Best, Status, Pause, and Restart; overlay reinforces end) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 704.40 Tm (  state with a restart CTA.) Tj ET
+BT /F2 16.00 Tf 1 0 0 1 54.00 665.20 Tm (6. Visual Language) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 54.00 646.00 Tm (Styling relies on a single styles.css file:) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 625.60 Tm (• Soft blues and warm oranges differentiate snake vs. food with accessible) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 608.80 Tm (  contrast.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 589.60 Tm (• Grid squares use the padding-top trick for perfect ratios and subtle) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 572.80 Tm (  gradients for depth.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 553.60 Tm (• Overlay uses translucent navy with centered text to spotlight the restart) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 536.80 Tm (  action.) Tj ET
+BT /F2 16.00 Tf 1 0 0 1 54.00 497.60 Tm (7. Quality Plan) Tj ET
+BT /F2 13.00 Tf 1 0 0 1 54.00 475.80 Tm (Automated Tests \(tests/logic.test.js\)) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 459.00 Tm (• Movement & default direction progression.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 439.80 Tm (• Reverse-direction guard to avoid instant self-collisions.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 420.60 Tm (• Growth & scoring when food aligns with next head cell.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 401.40 Tm (• Wall-collision detection and status updates.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 382.20 Tm (• Deterministic food placement via stubbed RNG.) Tj ET
+BT /F2 13.00 Tf 1 0 0 1 54.00 348.40 Tm (Manual Checklist) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 331.60 Tm (• Play with keyboard and tap controls; confirm latency-free steering.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 312.40 Tm (• Toggle Pause/Resume while in motion and after blur/focus events.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 293.20 Tm (• Trigger wall and self collisions; overlay + best-score update must) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 276.40 Tm (  appear.) Tj ET
+BT /F1 12.00 Tf 1 0 0 1 62.00 257.20 Tm (• Verify food never overlaps the snake or spawns outside the grid.) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 7 0 R /MediaBox [0 0 612 792] /Contents 5 0 R /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> >> >> >>
+endobj
+7 0 obj
+<< /Type /Pages /Count 3 /Kids [ 2 0 R 4 0 R 6 0 R ] >>
+endobj
+8 0 obj
+<< /Type /Catalog /Pages 7 0 R >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000009 00000 n 
+0000003055 00000 n 
+0000003294 00000 n 
+0000006413 00000 n 
+0000006652 00000 n 
+0000008874 00000 n 
+0000009113 00000 n 
+0000009184 00000 n 
+trailer
+<< /Root 8 0 R /Size 9 >>
+startxref
+9233
+%%EOF
