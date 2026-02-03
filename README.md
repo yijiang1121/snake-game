@@ -5,11 +5,29 @@ Classic Snake implementation using vanilla JS modules and a lightweight static s
 ## Run locally
 
 ```bash
-npm install  # no deps, but keeps scripts available
+npm install
 npm run dev  # serves at http://localhost:5173
 ```
 
 Open the URL and you will land on the only page, which hosts the Snake board.
+
+## Run as a Mac app (Electron)
+
+```bash
+npm install
+npm run start
+```
+
+This opens the game in a native Electron window on macOS.
+
+## Build a distributable .app (macOS)
+
+```bash
+npm install
+npm run build:mac
+```
+
+The `.app` bundle will be emitted to `dist/mac/Classic Snake.app`.
 
 ## Tests
 
